@@ -1,3 +1,5 @@
+// https://frontend.horse/articles/gooey-countdown-svg/ article Flutter implementation
+
 import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -227,6 +229,10 @@ class _MorphingCirclesPainter extends CustomPainter {
 
     canvas.restore();
 
+    /// I layered colorDodge/colorBurn (not the article’s color-matrix approach),
+    /// and the effect looks the same: the blurred edges tighten up and neighboring
+    /// blobs visually “threshold” and merge. It’s essentially a contrast boost on RGB
+    /// that makes the blur behave like a hard fuse, even though the alpha isn’t actually being quantized.
     canvas.drawRect(
       layerRect,
       Paint()
