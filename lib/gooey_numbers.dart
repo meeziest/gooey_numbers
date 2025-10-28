@@ -34,13 +34,13 @@ class _GooeyNumbersDemoState extends State<GooeyNumbersDemo> with SingleTickerPr
   int _prevRight = 0;
   int _right = 2;
 
-  static const _stagger = 0.005;
+  static const _stagger = 1e-2;
   final _rnd = math.Random();
 
   @override
   void initState() {
     super.initState();
-    _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 900));
+    _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 999));
     _t = CurvedAnimation(parent: _c, curve: Curves.linearToEaseOut);
 
     _referenceBounds = _paths.map((p) => p.getBounds()).reduce((a, b) => a.expandToInclude(b));
@@ -197,7 +197,7 @@ class _MorphingCirclesPainter extends CustomPainter {
     final targetSpacing = circleRadius * .7;
     final rawCount = maxTotal / targetSpacing;
     final circleCount = math.max(1, rawCount.floor());
-    final blurSigma = circleRadius * 0.9;
+    final blurSigma = circleRadius;
 
     final fromStep = fromTotal / (circleCount + 1);
     final toStep = toTotal / (circleCount + 1);
